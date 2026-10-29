@@ -9,14 +9,9 @@
 
 ## Vídeo Demostrativo de Ejecución
 
-> [!IMPORTANT]
-> A continuación se deja preparado el espacio para enlazar la grabación de la ejecución del proyecto, requerida para la entrega de la práctica.
+El vídeo demostrativo de la práctica se encuentra incluido localmente en la raíz del repositorio:
 
-* **Enlace al vídeo:** [Ver vídeo de demostración en YouTube / Google Drive](URL_DEL_VIDEO_AQUI) *(Sustituir por el enlace definitivo)*
-* **Archivo local / descarga alternativa:** `video_demostracion.mp4` *(o enlace al archivo en la nube)*
-
-<!-- Espacio reservado para miniatura o GIF de vista previa -->
-[![Miniatura del vídeo de demostración](https://img.shields.io/badge/V%C3%ADdeo%20Demostraci%C3%B3n-Ver%20en%20YouTube-red?style=for-the-badge&logo=youtube)](URL_DEL_VIDEO_AQUI)
+* **Archivo de vídeo local:** [`demostracion_video.mp4`](./demostracion_video.mp4)
 
 > **Puntos clave demostrados en el vídeo:**
 > 1. **Autoría en pantalla:** Indicador fijo visible en la esquina inferior izquierda (*Álvaro García Suárez · Informática Gráfica*).
@@ -30,7 +25,7 @@
 
 ---
 
-## 🚀 Guía de Instalación y Ejecución
+## Guía de Instalación y Ejecución
 
 Para ejecutar el proyecto en local es necesario contar con [Node.js](https://nodejs.org/) (versión 14 o superior) y el gestor de paquetes `npm`.
 

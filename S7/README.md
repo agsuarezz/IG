@@ -7,7 +7,7 @@
 
 ---
 
-## 📹 Vídeo Demostrativo de Ejecución
+## Vídeo Demostrativo de Ejecución
 
 [![Previsualización de la Demostración](./preview.gif)](./demostracion_video.mp4)
 

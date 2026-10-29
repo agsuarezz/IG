@@ -11,7 +11,7 @@
 
 [![Previsualización de la Demostración](./preview.gif)](./demostracion_video.mp4)
 
-> 💡 *Haz clic en la imagen animada superior para abrir o descargar el vídeo completo en alta definición (1440p a 60 fps).*
+> *Haz clic en la imagen animada superior para abrir o descargar el vídeo completo (Debido a su tamaño Github no permite hacer un preview).*
 
 * **Archivo de vídeo local completo:** [`demostracion_video.mp4`](./demostracion_video.mp4) (18 MB, 1440p a 60 fps)
 

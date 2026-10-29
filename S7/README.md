@@ -7,11 +7,13 @@
 
 ---
 
-## Vídeo Demostrativo de Ejecución
+## 📹 Vídeo Demostrativo de Ejecución
 
-El vídeo demostrativo de la práctica se encuentra incluido localmente en la raíz del repositorio:
+[![Previsualización de la Demostración](./preview.gif)](./demostracion_video.mp4)
 
-* **Archivo de vídeo local:** [`demostracion_video.mp4`](./demostracion_video.mp4)
+> 💡 *Haz clic en la imagen animada superior para abrir o descargar el vídeo completo en alta definición (1440p a 60 fps).*
+
+* **Archivo de vídeo local completo:** [`demostracion_video.mp4`](./demostracion_video.mp4) (18 MB, 1440p a 60 fps)
 
 > **Puntos clave demostrados en el vídeo:**
 > 1. **Autoría en pantalla:** Indicador fijo visible en la esquina inferior izquierda (*Álvaro García Suárez · Informática Gráfica*).

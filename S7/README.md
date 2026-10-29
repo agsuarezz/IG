@@ -38,20 +38,20 @@ cd IG/S7
 ```
 
 ### 2. Instalación de dependencias
-Instala los paquetes requeridos por el proyecto.:
+Instala los paquetes requeridos por el proyecto:
 ```bash
 npm install
 ```
 
 ### 3. Ejecutar el servidor de desarrollo
-Inicia el entorno de desarrollo con Parcel.
+Inicia el entorno de desarrollo con Parcel:
 ```bash
 npm start
 ```
 
 ---
 
-##  Descripción del Trabajo Realizado
+## Descripción del Trabajo Realizado
 
 La práctica consiste en el diseño, desarrollo e implementación de un **sistema planetario 3D completo e interactivo** utilizando la librería **Three.js**, haciendo especial énfasis en el tratamiento físico de luces, mapas de sombras, materiales avanzados con múltiples texturas, jerarquías de transformación, control de cámaras y una interfaz de usuario didáctica y configurable.
 
@@ -88,7 +88,7 @@ El sistema recrea a escala didáctica los cuerpos principales del Sistema Solar:
    - Situada en el centro del Sol emitiendo luz omnidireccional blanca a toda la escena.
    - Configurada como productora de sombras.
 2. **Luz Ambiente (`AmbientLight`):**
-   - Luz blanca homogénea de baja intensidad (0.15) que simula la luz difusa permitiendo distinguir suavemente las caras nocturnas de los planetas.
+   - Luz blanca homogénea de baja intensidad (0.15) que simula la luz difusa, permitiendo distinguir suavemente las caras nocturnas de los planetas.
 
 ### Renderizado de Sombras Suaves
 * Activación del motor de sombras en el renderizador: `renderer.shadowMap.enabled = true`.
@@ -99,7 +99,7 @@ El sistema recrea a escala didáctica los cuerpos principales del Sistema Solar:
 * **Materiales Phong (`MeshPhongMaterial`):** Empleados en todos los cuerpos celestes que interactúan con la luz del Sol, permitiendo reflexiones difusas y especulares (*Blinn-Phong*).
 * **Materiales Básicos (`MeshBasicMaterial`):** Empleados exclusivamente en el Sol (para que actúe como emisor sin sombras impropias) y en la cúpula de estrellas de fondo.
 
-##  Sistemas de Vistas y Cámaras
+## Sistemas de Vistas y Cámaras
 
 La aplicación cumple e incrementa el requisito de alternancia de vistas, implementando **tres modos de visualización**:
 
@@ -114,7 +114,7 @@ flowchart LR
    - Utiliza `OrbitControls`.
    - Permite rotar libremente la escena alrededor del centro, hacer zoom y paneo para tener una visión panorámica de todo el sistema y sus órbitas.
 2. **Vista Subjetiva de la Nave:**
-   - La cámara (`camNave`) se posiciona en una órbita respecto a cualquiera de los planetas del sistema.
+   - La cámara (`camNave`) se posiciona en órbita alrededor de cualquiera de los planetas del sistema.
    - Se sitúa estratégicamente entre el Sol y el planeta para enfocar siempre su cara diurna e iluminada.
    - Parámetros dinámicos desde la GUI: selector del planeta a seguir, distancia de observación (en múltiplos del radio del planeta), altura orbital y orientación (mirar al planeta o mirar hacia el Sol).
 3. **Vista de Nave Libre / Simulador de Vuelo (`FlyControls`):**
@@ -183,7 +183,7 @@ De acuerdo con las sugerencias de la guía de la práctica, se han incorporado l
 
 ## Declaración de Asistencia con Herramientas de IA
 
-* **Herramientas Utilizadas:** Google modelo Gemini 3.8.
+* **Herramientas Utilizadas:** Gemini 3.8 (Google).
 * **Ámbitos de Asistencia:**
   1. *Arquitectura y modularización:* Asesoría en la integración conjunta de `TransformControls`, `FlyControls` y `OrbitControls`, gestionando la activación y desactivación de eventos para evitar interferencias en el canvas WebGL.
   2. *Cálculo matemático orbital:* Soporte en las fórmulas de proyección y ajuste de la tercera ley de Kepler tras la finalización del arrastre de planetas.

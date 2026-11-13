@@ -4,6 +4,7 @@
 **Titulación:** Grado en Ingeniería Informática  
 **Centro:** Escuela de Ingeniería Informática (EII), Universidad de Las Palmas de Gran Canaria (ULPGC)  
 **Autor:** Álvaro García Suárez  
+**Enlace para entrar a CodeSandbox:** [https://codesandbox.io/p/devbox/heuristic-euler-hh3grh?workspaceId=ws_UYudFY3naGtQGZZ9VLLhan](https://codesandbox.io/p/devbox/heuristic-euler-hh3grh?workspaceId=ws_UYudFY3naGtQGZZ9VLLhan)
 
 > [!NOTE]
 > **Nota sobre el commit fuera de fecha:** Este commit realizado fuera de plazo tiene como único propósito adaptar el proyecto a **JavaScript vanilla (ES Modules + `importmap`)**, eliminando la configuración de empaquetado anterior para que pueda ejecutarse directamente en **CodeSandbox** sin modificar la funcionalidad de la práctica.

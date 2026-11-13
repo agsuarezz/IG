@@ -5,6 +5,9 @@
 **Centro:** Escuela de Ingeniería Informática (EII), Universidad de Las Palmas de Gran Canaria (ULPGC)  
 **Autor:** Álvaro García Suárez  
 
+> [!NOTE]
+> **Nota sobre el commit fuera de fecha:** Este commit realizado fuera de plazo tiene como único propósito adaptar el proyecto a **JavaScript vanilla (ES Modules + `importmap`)**, eliminando la configuración de empaquetado anterior para que pueda ejecutarse directamente en **CodeSandbox** sin modificar la funcionalidad de la práctica.
+
 ---
 
 ## Vídeo Demostrativo de Ejecución
@@ -27,27 +30,24 @@
 
 ---
 
-## Guía de Instalación y Ejecución
+## Guía de Ejecución
 
-Para ejecutar el proyecto en local es necesario contar con [Node.js](https://nodejs.org/) (versión 14 o superior) y el gestor de paquetes `npm`.
+El proyecto funciona en **JavaScript vanilla (ES Modules)** directamente en el navegador, sin necesidad de instalaciones previas ni empaquetadores. Las librerías `three` (`0.170.0`) y `lil-gui` (`0.21.0`) se cargan desde CDN mediante un `<script type="importmap">` en [`index.html`](./index.html).
 
-### 1. Clonar el repositorio y acceder a la carpeta de la práctica
+### Ejecución en CodeSandbox
+1. Crea un sandbox con la plantilla **Static (HTML / CSS / JS)** o importa la carpeta `S7` directamente desde GitHub.
+2. Mantén en la raíz [`index.html`](./index.html) junto a la carpeta [`src/`](./src) (`script.js` y `textures/`). La aplicación arrancará automáticamente sin pasos adicionales.
+
+### Ejecución en local
+Al utilizar módulos ES nativos, basta con servir la carpeta `S7` mediante cualquier servidor HTTP estático (por ejemplo, con Python o la extensión *Live Server* de VS Code):
+
 ```bash
 git clone https://github.com/agsuarezz/IG.git
 cd IG/S7
+python -m http.server 8080
 ```
 
-### 2. Instalación de dependencias
-Instala los paquetes requeridos por el proyecto:
-```bash
-npm install
-```
-
-### 3. Ejecutar el servidor de desarrollo
-Inicia el entorno de desarrollo con Parcel:
-```bash
-npm start
-```
+A continuación, abre `http://localhost:8080/` en tu navegador.
 
 ---
 
@@ -88,7 +88,7 @@ El sistema recrea a escala didáctica los cuerpos principales del Sistema Solar:
    - Situada en el centro del Sol emitiendo luz omnidireccional blanca a toda la escena.
    - Configurada como productora de sombras.
 2. **Luz Ambiente (`AmbientLight`):**
-   - Luz blanca homogénea de baja intensidad (0.15) que simula la luz difusa, permitiendo distinguir suavemente las caras nocturnas de los planetas.
+   - Luz blanca homogénea de baja intensidad (`0.15 * π`) que simula la luz difusa, permitiendo distinguir suavemente las caras nocturnas de los planetas.
 
 ### Renderizado de Sombras Suaves
 * Activación del motor de sombras en el renderizador: `renderer.shadowMap.enabled = true`.

@@ -4,43 +4,6 @@ import { TransformControls } from "three/examples/jsm/controls/TransformControls
 import { FlyControls } from "three/examples/jsm/controls/FlyControls.js";
 import GUI from "lil-gui";
 
-// TEXTURAS
-import earthImg from "./textures/earth.jpg";
-import mercuryImg from "./textures/mercury.jpg";
-import venusImg from "./textures/venus.jpg";
-import marsImg from "./textures/mars.jpg";
-import jupiterImg from "./textures/jupiter.jpg";
-import saturnImg from "./textures/saturn.jpg";
-import saturnRingImg from "./textures/saturn_ring.png";
-import uranusImg from "./textures/uranus.jpg";
-import neptuneImg from "./textures/neptune.jpg";
-import sunImg from "./textures/sun.jpg";
-import moonImg from "./textures/moon.jpg";
-import earthBumpImg from "./textures/earthbump1k.jpg";
-import earthSpecImg from "./textures/earthspec1k.jpg";
-import earthCloudImg from "./textures/earthcloudmap.jpg";
-import earthCloudTransImg from "./textures/earthcloudmaptrans_invert.jpg";
-import fondoImg from "./textures/fondo.jpg";
-
-const TEXTURAS = {
-  "earth.jpg": earthImg,
-  "mercury.jpg": mercuryImg,
-  "venus.jpg": venusImg,
-  "mars.jpg": marsImg,
-  "jupiter.jpg": jupiterImg,
-  "saturn.jpg": saturnImg,
-  "saturn_ring.png": saturnRingImg,
-  "uranus.jpg": uranusImg,
-  "neptune.jpg": neptuneImg,
-  "sun.jpg": sunImg,
-  "moon.jpg": moonImg,
-  "earthbump1k.jpg": earthBumpImg,
-  "earthspec1k.jpg": earthSpecImg,
-  "earthcloudmap.jpg": earthCloudImg,
-  "fondo.jpg": fondoImg,
-  "earthcloudmaptrans_invert.jpg" : earthCloudTransImg,
-};
-
 const AUTOR = "Álvaro García Suárez · Informática Gráfica";
 const MAX_PLANETS = 12;
 const ORBIT_K = 4; // velocidad orbital
@@ -321,9 +284,9 @@ function init() {
   createBackground();
   createStar(SUN_RADIUS);
 
-  // Iluminación: luz ambiente tenue + luz puntual en el Sol
-  scene.add(new THREE.AmbientLight(0xffffff, 0.15));
-  sunLight = new THREE.PointLight(0xffffff, params.intensidadSol, 0, 0);
+  // Iluminación: luz ambiente tenue + luz puntual en el Sol (escalada a Three.js >= r155)
+  scene.add(new THREE.AmbientLight(0xffffff, 0.15 * Math.PI));
+  sunLight = new THREE.PointLight(0xffffff, params.intensidadSol * Math.PI, 0, 0);
   sunLight.castShadow = true;
   sunLight.shadow.mapSize.set(2048, 2048);
   sunLight.shadow.camera.near = 0.5;
@@ -348,11 +311,7 @@ function init() {
 
 // Carga de texturas
 function cargarMapa(mat, prop, archivo, esColor = false, onLoad = null) {
-  const url = TEXTURAS[archivo];
-  if (!url) {
-    console.warn("Textura no registrada: " + archivo);
-    return;
-  }
+  const url = new URL(`./textures/${archivo}`, import.meta.url).href;
   loader.load(
     url,
     (t) => {
@@ -722,7 +681,7 @@ function initGUI() {
   gui
     .add(params, "intensidadSol", 0, 6, 0.1)
     .name("Luz del Sol")
-    .onChange((v) => (sunLight.intensity = v));
+    .onChange((v) => (sunLight.intensity = v * Math.PI));
   gui
     .add(params, "orbitas")
     .name("Mostrar órbitas")

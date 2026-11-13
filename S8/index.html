@@ -15,11 +15,22 @@
   </script>
 </head>
 <body>
-  <!-- HUD minimalista superpuesto -->
+  <!-- Botón flotante para restaurar HUD cuando está colapsado -->
+  <button id="btn-show-hud" class="floating-pill hidden" title="Mostrar panel (tecla H)">
+    ☰ HUD
+  </button>
+
+  <!-- HUD minimalista en la esquina superior izquierda -->
   <aside id="hud">
     <header class="hud-header">
-      <h1>OCEANOS // 3D</h1>
-      <span id="data-badge" class="badge">CSV Local</span>
+      <div class="hud-title-group">
+        <h1>OCEANOS // 3D</h1>
+        <span id="data-badge" class="badge">CSV Local</span>
+      </div>
+      <div class="header-icons">
+        <button id="btn-fullscreen" class="icon-btn" title="Pantalla completa">⛶</button>
+        <button id="btn-hide-hud" class="icon-btn" title="Ocultar HUD (tecla H)">✕</button>
+      </div>
     </header>
 
     <section class="hud-stats">
@@ -32,26 +43,52 @@
         <span id="active-ships" class="stat-value">0</span>
       </div>
       <div class="stat-row">
-        <span class="stat-label">Celdas de corriente</span>
+        <span class="stat-label">Celdas oceánicas</span>
         <span id="current-cells" class="stat-value">0</span>
       </div>
     </section>
 
     <section class="hud-controls">
+      <div class="select-group">
+        <label for="ocean-mode">Modo oceánico</label>
+        <select id="ocean-mode">
+          <option value="0" selected>Corrientes (Olas 3D)</option>
+          <option value="1">Temperatura del mar (SST)</option>
+          <option value="2">Altura de oleaje (m)</option>
+        </select>
+      </div>
+
+      <div class="select-group">
+        <label for="traffic-filter">Filtro de tráfico</label>
+        <select id="traffic-filter">
+          <option value="all" selected>Flota completa (Corredores + AIS)</option>
+          <option value="major">Solo corredores principales (Major)</option>
+          <option value="ais">Solo buques AIS reales</option>
+        </select>
+      </div>
+
       <label class="toggle-item">
         <input type="checkbox" id="toggle-currents" checked />
-        <span>Corrientes oceánicas (olas)</span>
+        <span>Capa oceánica activa</span>
       </label>
       <label class="toggle-item">
         <input type="checkbox" id="toggle-traffic" checked />
         <span>Tráfico marítimo</span>
       </label>
       <label class="toggle-item">
+        <input type="checkbox" id="toggle-clouds" checked />
+        <span>Nubes atmosféricas</span>
+      </label>
+      <label class="toggle-item">
+        <input type="checkbox" id="toggle-daynight" checked />
+        <span>Ciclo Día / Noche solar</span>
+      </label>
+      <label class="toggle-item">
         <input type="checkbox" id="toggle-wireframe" />
         <span>Malla batimétrica (wireframe)</span>
       </label>
       <label class="toggle-item">
-        <input type="checkbox" id="toggle-autorotate" checked />
+        <input type="checkbox" id="toggle-autorotate" />
         <span>Rotación automática</span>
       </label>
 
@@ -65,14 +102,14 @@
     </section>
 
     <section class="hud-actions">
-      <button id="btn-refresh-api" class="btn btn-primary" title="Descarga corrientes reales (Open-Meteo) y buques AIS en vivo (Digitraffic)">
+      <button id="btn-refresh-api" class="btn btn-primary" title="Descarga corrientes, SST, oleaje (Open-Meteo) y buques AIS (Digitraffic)">
         ↻ Retrieve API en vivo
       </button>
       <div class="btn-row">
-        <button id="btn-reload-csv" class="btn btn-secondary" title="Recarga corrientes, rutas y AIS desde src/">
+        <button id="btn-reload-csv" class="btn btn-secondary" title="Recarga archivos locales desde src/">
           ⟳ Recargar CSV
         </button>
-        <button id="btn-download-csv" class="btn btn-secondary" title="Exporta el campo de corrientes actual a CSV">
+        <button id="btn-download-csv" class="btn btn-secondary" title="Exporta datos oceánicos actuales a CSV">
           ⬇ Exportar CSV
         </button>
       </div>
@@ -80,19 +117,45 @@
     </section>
   </aside>
 
-  <!-- Leyenda inferior -->
-  <footer id="legend">
-    <div class="legend-item">
-      <span class="dot dot-cyan"></span>
-      <span>Corrientes oceánicas (oleaje 3D)</span>
+  <!-- Barra superior derecha: Presets de cámara -->
+  <nav id="camera-presets" aria-label="Vistas rápidas">
+    <button class="preset-btn active" data-preset="global">🌐 Global</button>
+    <button class="preset-btn" data-preset="gibraltar">Gibraltar</button>
+    <button class="preset-btn" data-preset="suez">Suez</button>
+    <button class="preset-btn" data-preset="malaca">Malaca</button>
+    <button class="preset-btn" data-preset="panama">Panamá</button>
+    <button class="preset-btn" data-preset="atlantico">Atlántico N.</button>
+  </nav>
+
+  <!-- Panel inspector de barco (se muestra al hacer clic en un barco) -->
+  <aside id="ship-inspector" class="hidden">
+    <div class="inspector-header">
+      <span id="insp-title">BUQUE</span>
+      <button id="btn-close-inspector" class="icon-btn" title="Cerrar">✕</button>
     </div>
-    <div class="legend-item">
-      <span class="dot dot-gold"></span>
-      <span>Red global (239 corredores)</span>
+    <div id="insp-body" class="inspector-body"></div>
+    <button id="btn-follow-ship" class="btn btn-primary btn-full">🎥 Seguir buque</button>
+  </aside>
+
+  <!-- Sonda oceanográfica bajo el cursor + leyenda de escala -->
+  <footer id="bottom-bar">
+    <div id="ocean-probe" class="probe-pill">
+      Pasa el cursor sobre el océano para consultar sonda · Haz clic en un buque para inspeccionar
     </div>
-    <div class="legend-item">
-      <span class="dot dot-orange"></span>
-      <span>Flota texturizada + AIS en vivo</span>
+    <div id="legend">
+      <div class="scale-legend">
+        <span id="scale-min" class="scale-text">0.0 m/s</span>
+        <div id="scale-bar" class="scale-gradient mode-currents"></div>
+        <span id="scale-max" class="scale-text">1.2+ m/s</span>
+      </div>
+      <div class="legend-item">
+        <span class="dot dot-gold"></span>
+        <span>239 corredores</span>
+      </div>
+      <div class="legend-item">
+        <span class="dot dot-orange"></span>
+        <span>Flota 3D + AIS</span>
+      </div>
     </div>
   </footer>
 

@@ -4,28 +4,26 @@ La aplicación lee automáticamente los archivos `src/corrientes.csv` y `src/rut
 
 ---
 
-## 1. `src/corrientes.csv` (Capa 1: Corrientes Oceánicas)
+## 1. `src/corrientes.csv` (Capa 1: Corrientes, Oleaje y SST)
 
 Formato esperado (una fila por celda geográfica):
 
 ```csv
-lat;lon;u;v
-35;-75;0.82;0.45
-40;-70;-0.30;0.05
+lat;lon;u;v;wave_height;sst
+35;-75;0.82;0.45;1.74;19.5
+40;-70;-0.30;0.05;1.20;14.2
 ```
 
 - **`lat`**: Latitud en grados decimales (`[-90, 90]`).
 - **`lon`**: Longitud en grados decimales (`[-180, 180]`).
-- **`u`**: Componente zonal de la corriente (Oeste -> Este, en m/s). Valores positivos mueven partículas hacia el Este.
-- **`v`**: Componente meridional de la corriente (Sur -> Norte, en m/s). Valores positivos mueven partículas hacia el Norte.
+- **`u`**: Componente zonal de la corriente (Oeste -> Este, en m/s). Valores positivos mueven hacia el Este.
+- **`v`**: Componente meridional de la corriente (Sur -> Norte, en m/s). Valores positivos mueven hacia el Norte.
+- **`wave_height`** *(opcional)*: Altura significativa de ola en metros (`m`).
+- **`sst`** *(opcional)*: Temperatura superficial del mar en grados Celsius (`°C`). Si se omiten, se estiman automáticamente según latitud.
 
 ### Sustitución con datos reales
-- **Open-Meteo Marine API (automático)**:
-  - Desde la interfaz web pulsa **↻ Retrieve API en vivo** para descargar corrientes reales actualizadas y exportables con **⬇ Exportar CSV**.
-  - O ejecuta en terminal:
-    ```bash
-    python scripts/fetch_ocean_data.py
-    ```
+- **Open-Meteo Marine API (automático desde la web):**
+  - Desde la interfaz web pulsa **↻ Retrieve API en vivo** para descargar corrientes, oleaje y SST actuales y exportarlos con **⬇ Exportar CSV**.
 - **NOAA OSCAR / Copernicus Marine Service (CMEMS)**:
   - Si descargas un NetCDF (`.nc`) con variables `uo` (zonal) y `vo` (meridional), puedes convertirlo a `src/corrientes.csv` con Python (`xarray` + `pandas`):
     ```python
@@ -60,6 +58,6 @@ R1;51.9;4.1;40.6;-74.0
 ```
 
 ### Sustitución con datos reales (MarineCadastre / Shipping-Lanes / Digitraffic AIS)
-- **Corredores globales (`src/rutas_maritimas.csv`)**: El script [scripts/fetch_ocean_data.py](scripts/fetch_ocean_data.py) descarga las **239 rutas globales reales** (`Major`, `Middle`, `Minor`) de `newzealandpaul/Shipping-Lanes` (`Shipping_Lanes_v1.geojson`). La columna opcional `tipo` ajusta la densidad de buques en cada corredor.
-- **Buques AIS en tiempo real (`src/ais_live.csv`)**: Formato `mmsi;lat;lon;sog;cog`, descargado automáticamente desde **Digitraffic Marine AIS** (o en directo desde el navegador con el botón **↻ Retrieve API en vivo**).
+- **Corredores globales (`src/rutas_maritimas.csv`):** Incluye las **239 rutas globales reales** (`Major`, `Middle`, `Minor`) extraídas de `newzealandpaul/Shipping-Lanes` (`Shipping_Lanes_v1.geojson`). La columna opcional `tipo` ajusta la densidad de buques en cada corredor.
+- **Buques AIS en tiempo real (`src/ais_live.csv`):** Formato `mmsi;lat;lon;sog;cog`, con instantánea de **Digitraffic Marine AIS** actualizable en directo desde el navegador con el botón **↻ Retrieve API en vivo**.
 - **NOAA MarineCadastre (AIS)**: Los CSVs de MarineCadastre.gov incluyen columnas `MMSI`, `BaseDateTime`, `LAT`, `LON`. Basta con mapear `MMSI -> id_barco`, `BaseDateTime -> timestamp`, `LAT -> lat`, `LON -> lon` y guardar en `src/rutas_maritimas.csv`.

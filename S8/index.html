@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visualización 3D: Corrientes Oceánicas y Tráfico Marítimo</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+        "three/examples/jsm/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- HUD minimalista superpuesto -->
+  <aside id="hud">
+    <header class="hud-header">
+      <h1>OCEANOS // 3D</h1>
+      <span id="data-badge" class="badge">CSV Local</span>
+    </header>
+
+    <section class="hud-stats">
+      <div class="stat-row">
+        <span class="stat-label">Tiempo simulado</span>
+        <span id="sim-datetime" class="stat-value">Cargando...</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Buques activos</span>
+        <span id="active-ships" class="stat-value">0</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Celdas de corriente</span>
+        <span id="current-cells" class="stat-value">0</span>
+      </div>
+    </section>
+
+    <section class="hud-controls">
+      <label class="toggle-item">
+        <input type="checkbox" id="toggle-currents" checked />
+        <span>Corrientes oceánicas (olas)</span>
+      </label>
+      <label class="toggle-item">
+        <input type="checkbox" id="toggle-traffic" checked />
+        <span>Tráfico marítimo</span>
+      </label>
+      <label class="toggle-item">
+        <input type="checkbox" id="toggle-wireframe" />
+        <span>Malla batimétrica (wireframe)</span>
+      </label>
+      <label class="toggle-item">
+        <input type="checkbox" id="toggle-autorotate" checked />
+        <span>Rotación automática</span>
+      </label>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span>Velocidad simulación</span>
+          <span id="speed-label">1.0x</span>
+        </div>
+        <input type="range" id="sim-speed" min="0.2" max="4.0" step="0.2" value="1.0" />
+      </div>
+    </section>
+
+    <section class="hud-actions">
+      <button id="btn-refresh-api" class="btn btn-primary" title="Descarga corrientes reales (Open-Meteo) y buques AIS en vivo (Digitraffic)">
+        ↻ Retrieve API en vivo
+      </button>
+      <div class="btn-row">
+        <button id="btn-reload-csv" class="btn btn-secondary" title="Recarga corrientes, rutas y AIS desde src/">
+          ⟳ Recargar CSV
+        </button>
+        <button id="btn-download-csv" class="btn btn-secondary" title="Exporta el campo de corrientes actual a CSV">
+          ⬇ Exportar CSV
+        </button>
+      </div>
+      <p id="status-msg" class="status-msg">Listo</p>
+    </section>
+  </aside>
+
+  <!-- Leyenda inferior -->
+  <footer id="legend">
+    <div class="legend-item">
+      <span class="dot dot-cyan"></span>
+      <span>Corrientes oceánicas (oleaje 3D)</span>
+    </div>
+    <div class="legend-item">
+      <span class="dot dot-gold"></span>
+      <span>Red global (239 corredores)</span>
+    </div>
+    <div class="legend-item">
+      <span class="dot dot-orange"></span>
+      <span>Flota texturizada + AIS en vivo</span>
+    </div>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

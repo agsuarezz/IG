@@ -1,5 +1,7 @@
 # OCEANOS // 3D
 
+**Demo en vivo (CodeSandbox):** [https://codesandbox.io/p/devbox/4ylt8x](https://codesandbox.io/p/devbox/4ylt8x)
+
 Visualización geográfica 3D con **Three.js (ES Modules + `OrbitControls`)** que combina sobre un globo con batimetría **corrientes oceánicas, oleaje y SST** (*shaders* GLSL) junto a **tráfico marítimo global y buques AIS reales** (**Informática Gráfica — S8, ULPGC**).
 
 ## Demo

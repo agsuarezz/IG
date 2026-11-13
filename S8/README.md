@@ -8,7 +8,7 @@ Visualización geográfica 3D con **Three.js (ES Modules + `OrbitControls`)** qu
 
 ![Demo interactiva de OCEANOS 3D](assets/demo.gif)
 
-- **Vídeo HD (14,9 s):** [`assets/demo.mp4`](assets/demo.mp4)
+- **Vídeo Full HD (28,6 s):** [`assets/demo.mp4`](assets/demo.mp4)
 
 <details>
 <summary>Capturas adicionales (SST e Inspector en Gibraltar)</summary>

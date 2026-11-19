@@ -59,11 +59,6 @@ gl_FragColor=vec4(o/(1.+o),1.);
 
 ---
 
-### Ejecución en *The Book of Shaders Editor*
-Copiar y pegar directamente el contenido de [shader.frag](./shader.frag) en [http://editor.thebookofshaders.com](http://editor.thebookofshaders.com).
-
----
-
 ## 4. Extra: Integración de shaders en S7 ([ShaderS7](./ShaderS7/))
 
 **Enlace en vivo (`ShaderS7`):** [https://codesandbox.io/p/sandbox/entrega-s9-s7-shader-fcl54y](https://codesandbox.io/p/sandbox/entrega-s9-s7-shader-fcl54y)

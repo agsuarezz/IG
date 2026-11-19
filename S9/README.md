@@ -9,15 +9,15 @@
 
 ## 1. Motivación
 
-La motivación principal de este *shader* nace de intentar capturar la sensación hipnótica que se experimenta al mirar a través de un **caleidoscopio**: esa mezcla de simetría infinita, reflejos que se multiplican al girar el tubo y fragmentos de luz que cambian constantemente de forma y color. Al mismo tiempo, las formas estrelladas y los destellos luminosos que brotan y se expanden en cada octava buscan evocar el estallido vibrante de unos **fuegos artificiales** en el cielo nocturno, combinando geometría caleidoscópica con un dinamismo festivo y brillante.
+La idea de este *shader* es recrear la sensación que se tiene al mirar por un **caleidoscopio**, con formas simétricas que se repiten, giran y cambian de color todo el tiempo. Además, las estrellas brillantes que van apareciendo y expandiéndose recuerdan a **fuegos artificiales** sobre un fondo oscuro.
 
-Para materializar esta idea en un archivo compacto de menos de 512 bytes, adecuado tanto para su ejecución en *The Book of Shaders* como para formar parte de un *reel* audiovisual, la composición combina cuatro técnicas del guion de la práctica S9:
-1. **Patrones generativos con `fract`**: subdivisión iterativa del espacio aprovechando el paralelismo de la GPU.
-2. **Rotación 2D con matrices (`mat2`)** dependiente del tiempo (`u_time`) y de cada escala.
-3. **Coordenadas polares (`atan`, `length`)** del *Laboratorio de formas* para esculpir rosetones de 6 pétalos.
-4. **Ondas de interferencia radiales** del *Efecto túnel* combinadas con una **paleta cosenoidal procedural** (Inigo Quilez) para obtener colores iridiscentes suaves sin texturas.
+Para conseguir este efecto en menos de 512 bytes (y que se vea bien tanto en *The Book of Shaders* como en un *reel*), el código combina cuatro técnicas vistas en la práctica S9:
+1. **Patrones repetitivos con `fract`** para dividir el espacio en varias capas.
+2. **Rotación 2D con matrices (`mat2`)** animada con `u_time`.
+3. **Coordenadas polares (`atan`, `length`)** para crear las formas de estrellas de 6 puntas.
+4. **Ondas radiales y una paleta de colores con coseno** (Inigo Quilez) para dar brillo y cambiar de color de forma suave sin usar texturas.
 
-Al normalizar por `min(u_resolution.x, u_resolution.y)` y depender únicamente de `u_resolution` y `u_time`, el resultado conserva sus proporciones en cualquier formato (`1:1`, `16:9` o `9:16`) y funciona de forma autónoma.
+Al ajustar las coordenadas con `min(u_resolution.x, u_resolution.y)` y usar solo `u_resolution` y `u_time`, el resultado no se deforma en ningún tamaño de pantalla (`1:1`, `16:9` o `9:16`) y se anima solo.
 
 ---
 

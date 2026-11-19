@@ -1,5 +1,11 @@
 # Práctica IG S9 — Shader de Fragmentos Generativo (*Tiny Code*)
 
+**Enlace en vivo:** [https://codesandbox.io/p/sandbox/entrega-s9-nxp6lx](https://codesandbox.io/p/sandbox/entrega-s9-nxp6lx)
+
+| Instante 1 | Instante 2 |
+| :---: | :---: |
+| ![Captura 1 del shader generativo S9](assets/shader_1.png) | ![Captura 2 del shader generativo S9](assets/shader_2.png) |
+
 ## 1. Motivación
 
 La idea de este *shader* es recrear la sensación que se tiene al mirar por un **caleidoscopio**, con formas simétricas que se repiten, giran y cambian de color todo el tiempo. Además, las estrellas brillantes que van apareciendo y expandiéndose recuerdan a **fuegos artificiales** sobre un fondo oscuro.
@@ -60,12 +66,18 @@ Copiar y pegar directamente el contenido de [shader.frag](./shader.frag) en [htt
 
 ## 4. Extra: Integración de shaders en S7 ([ShaderS7](./ShaderS7/))
 
-Como extra, se ha creado una versión con shaders de la práctica **S7 (Sistema Planetario 3D)** dentro de [ShaderS7/](./ShaderS7/) (en JavaScript vanilla + Three.js, sin `npm` ni `Vite`), integrando tres shaders GLSL:
-- **Sol de plasma + corona**: deformación animada en *vertex shader*, turbulencia en *fragment shader* sobre `sun.jpg` y corona aditiva Fresnel.
-- **Tierra Día/Noche + atmósfera**: mezcla dinámica de textura diurna (`earth.jpg`), reflejo especular oceánico y luces nocturnas (`earth_lights_2k.png`) según el ángulo con el Sol, más halo azul atmosférico.
-- **Portal Caleidoscópico S9**: integración directa del patrón de [shader.frag](./shader.frag) como agujero de gusano interactivo en la escena.
+**Enlace en vivo (`ShaderS7`):** [https://codesandbox.io/p/sandbox/entrega-s9-s7-shader-fcl54y](https://codesandbox.io/p/sandbox/entrega-s9-s7-shader-fcl54y)
 
-Los detalles de implementación y controles están en [ShaderS7/README.md](./ShaderS7/README.md).
+Como extra, se ha creado una versión con shaders de la práctica **S7 (Sistema Planetario 3D)** dentro de [ShaderS7/](./ShaderS7/), integrando tres shaders GLSL:
+- **Sol de plasma + corona**: superficie solar animada y corona luminosa alrededor.
+- **Tierra Día/Noche + atmósfera**: transición entre la cara diurna (`earth.jpg`) y las luces nocturnas (`earth_lights_2k.png`) según la dirección del Sol, con halo atmosférico azulado.
+- **Portal Caleidoscópico S9**: integración directa del patrón de [shader.frag](./shader.frag) como portal interactivo en la escena.
+
+| Vista general (`ShaderS7`) | Tierra Día/Noche |
+| :---: | :---: |
+| ![Vista general ShaderS7](ShaderS7/assets/general.png) | ![Tierra Día/Noche ShaderS7](ShaderS7/assets/tierra.png) |
+
+Más capturas y controles en [ShaderS7/README.md](./ShaderS7/README.md).
 
 ---
 

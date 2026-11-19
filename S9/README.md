@@ -2,9 +2,16 @@
 
 **Enlace en vivo:** [https://codesandbox.io/p/sandbox/entrega-s9-nxp6lx](https://codesandbox.io/p/sandbox/entrega-s9-nxp6lx)
 
+![Animación del shader generativo S9](assets/shader.gif)
+
+<details>
+<summary>Capturas estáticas</summary>
+
 | Instante 1 | Instante 2 |
 | :---: | :---: |
 | ![Captura 1 del shader generativo S9](assets/shader_1.png) | ![Captura 2 del shader generativo S9](assets/shader_2.png) |
+
+</details>
 
 ## 1. Motivación
 

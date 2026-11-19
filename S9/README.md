@@ -64,15 +64,6 @@ S9/
 └── README.md           # Esta documentación
 ```
 
-### Ejecución local (sin `npm` ni `Vite`)
-Servir la carpeta raíz con cualquier servidor estático (por ejemplo *Live Server* de VS Code o Python):
-
-```bash
-python -m http.server 8090
-```
-
-Abrir `http://localhost:8090/` en el navegador.
-
 ### Ejecución en *The Book of Shaders Editor*
 Copiar y pegar directamente el contenido de [shader.frag](./shader.frag) en [http://editor.thebookofshaders.com](http://editor.thebookofshaders.com).
 

@@ -1,12 +1,5 @@
 # Práctica IG S9 — Shader de Fragmentos Generativo (*Tiny Code*)
 
-**Título del shader:** *Mandala Caleidoscópico de Interferencia*  
-**Shader *tiny code*:** [shader.frag](./shader.frag) (**493 bytes** ≤ 512 bytes, incluidos `uniforms` y `precision mediump float;`, sin comentarios)  
-**Shader legible (comentado):** [shader_legible.frag](./shader_legible.frag) (equivalente matemático exacto)  
-**Compatibilidad:** GLSL ES 1.00 / WebGL 1 — ejecutable directamente en [The Book of Shaders Editor](http://editor.thebookofshaders.com) y en el visor local en JavaScript vanilla + Three.js (sin `npm` ni `Vite`).
-
----
-
 ## 1. Motivación
 
 La idea de este *shader* es recrear la sensación que se tiene al mirar por un **caleidoscopio**, con formas simétricas que se repiten, giran y cambian de color todo el tiempo. Además, las estrellas brillantes que van apareciendo y expandiéndose recuerdan a **fuegos artificiales** sobre un fondo oscuro.

@@ -58,7 +58,18 @@ Copiar y pegar directamente el contenido de [shader.frag](./shader.frag) en [htt
 
 ---
 
-## 4. Referencias
+## 4. Extra: Integración de shaders en S7 ([ShaderS7](./ShaderS7/))
+
+Como extra, se ha creado una versión con shaders de la práctica **S7 (Sistema Planetario 3D)** dentro de [ShaderS7/](./ShaderS7/) (en JavaScript vanilla + Three.js, sin `npm` ni `Vite`), integrando tres shaders GLSL:
+- **Sol de plasma + corona**: deformación animada en *vertex shader*, turbulencia en *fragment shader* sobre `sun.jpg` y corona aditiva Fresnel.
+- **Tierra Día/Noche + atmósfera**: mezcla dinámica de textura diurna (`earth.jpg`), reflejo especular oceánico y luces nocturnas (`earth_lights_2k.png`) según el ángulo con el Sol, más halo azul atmosférico.
+- **Portal Caleidoscópico S9**: integración directa del patrón de [shader.frag](./shader.frag) como agujero de gusano interactivo en la escena.
+
+Los detalles de implementación y controles están en [ShaderS7/README.md](./ShaderS7/README.md).
+
+---
+
+## 5. Referencias
 
 - **[Gon21]** Patricio Gonzalez Vivo y Jen Lowe. *The Book of Shaders*. https://thebookofshaders.com/
 - **[Qui15]** Inigo Quilez. *Palettes — Procedural Cosine Color Palettes*. https://iquilezles.org/articles/palettes/

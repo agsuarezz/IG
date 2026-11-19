@@ -8,7 +8,7 @@ Para conseguir este efecto en menos de 512 bytes (y que se vea bien tanto en *Th
 1. **Patrones repetitivos con `fract`** para dividir el espacio en varias capas.
 2. **Rotación 2D con matrices (`mat2`)** animada con `u_time`.
 3. **Coordenadas polares (`atan`, `length`)** para crear las formas de estrellas de 6 puntas.
-4. **Ondas radiales y una paleta de colores con coseno** (Inigo Quilez) para dar brillo y cambiar de color de forma suave sin usar texturas.
+4. **Ondas radiales y una paleta de colores con coseno** para dar brillo y cambiar de color de forma suave sin usar texturas.
 
 Al ajustar las coordenadas con `min(u_resolution.x, u_resolution.y)` y usar solo `u_resolution` y `u_time`, el resultado no se deforma en ningún tamaño de pantalla (`1:1`, `16:9` o `9:16`) y se anima solo.
 

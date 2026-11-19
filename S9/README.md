@@ -53,23 +53,12 @@ gl_FragColor=vec4(o/(1.+o),1.);
 
 ---
 
-## 4. Estructura y ejecución
-
-```text
-S9/
-├── index.html          # Visor a pantalla completa (Three.js vía importmap CDN, sin npm ni Vite)
-├── main.js             # Script en JavaScript vanilla
-├── shader.frag         # Shader tiny code (493 bytes ≤ 512 bytes)
-├── shader_legible.frag # Versión legible y comentada equivalente
-└── README.md           # Esta documentación
-```
-
 ### Ejecución en *The Book of Shaders Editor*
 Copiar y pegar directamente el contenido de [shader.frag](./shader.frag) en [http://editor.thebookofshaders.com](http://editor.thebookofshaders.com).
 
 ---
 
-## 5. Referencias
+## 4. Referencias
 
 - **[Gon21]** Patricio Gonzalez Vivo y Jen Lowe. *The Book of Shaders*. https://thebookofshaders.com/
 - **[Qui15]** Inigo Quilez. *Palettes — Procedural Cosine Color Palettes*. https://iquilezles.org/articles/palettes/
